@@ -15,6 +15,7 @@ namespace WhoIsTalking
         VRRig rig;
         NetPlayer player;
         PhotonVoiceView voice;
+        string platform;
 
         Color Orange = new Color(1, 0.3288f, 0, 1);
         void Start()
@@ -80,7 +81,11 @@ namespace WhoIsTalking
             rig = GetComponent<VRRig>();
             player = rig?.OwningNetPlayer;
             voice = VRRigCache.rigsInUse[rig.OwningNetPlayer].voiceView;
+
+            // note: Oculus Rift players still show up as "OCULUS"
+            platform = rig.concatStringOfCosmeticsAllowed.ToUpper().Contains("FIRST LOGIN") ? " (STEAM)" : " (OCULUS)";
         }
+
         void FixedUpdate()
         {
             try
@@ -89,7 +94,6 @@ namespace WhoIsTalking
                 FPRend.material.color = ColourHandling();
                 FPSpeakerRend.material.color = ColourHandling();
                 FPRend.transform.LookAt(Camera.main.transform.position);
-
                 TPSpeakerRend.material.color = ColourHandling();
                 TPRend.material.color = ColourHandling();
                 if (ThirdPCam != null)
@@ -109,8 +113,9 @@ namespace WhoIsTalking
                 {
                     TPSpeakerRend.forceRenderingOff = true;
                 }
-                TPText.text = player.NickName;
-                FPText.text = player.NickName;
+
+                TPText.text = Mod.Platform.Value == true ? player.NickName + platform : player.NickName;
+                FPText.text = Mod.Platform.Value == true ? player.NickName + platform : player.NickName;
             }
             catch
             {

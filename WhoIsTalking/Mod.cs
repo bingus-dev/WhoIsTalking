@@ -10,10 +10,12 @@ namespace WhoIsTalking
     public class Mod : BaseUnityPlugin
     {
         public static ConfigEntry<bool> Speaker;
+        public static ConfigEntry<bool> ShowPlatform;
         Mod()
         {
             HarmonyP.ApplyPatches();
-            Speaker = Config.Bind("Settings","Show Speaker", true);
+            Speaker = Config.Bind("Settings", "Speaker", true);
+            ShowPlatform = Config.Bind("Settings", "Show Platform", false);
         }
     }
 }
