@@ -15,7 +15,7 @@ namespace WhoIsTalking
         {
             HarmonyP.ApplyPatches();
             Speaker = Config.Bind("Settings", "Speaker", true);
-            ShowPlatform = Config.Bind("Settings", "Show Platform", false);
+            ShowPlatform = Config.Bind("Settings", "ShowGamePlatform", false);
         }
     }
 }
