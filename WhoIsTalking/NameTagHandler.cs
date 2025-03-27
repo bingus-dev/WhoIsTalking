@@ -114,8 +114,8 @@ namespace WhoIsTalking
                     TPSpeakerRend.forceRenderingOff = true;
                 }
 
-                TPText.text = Mod.Platform.Value == true ? player.NickName + platform : player.NickName;
-                FPText.text = Mod.Platform.Value == true ? player.NickName + platform : player.NickName;
+                TPText.text = Mod.ShowPlatform.Value == true ? player.NickName + platform : player.NickName;
+                FPText.text = Mod.ShowPlatform.Value == true ? player.NickName + platform : player.NickName;
             }
             catch
             {
@@ -126,7 +126,7 @@ namespace WhoIsTalking
         void FirstPersonViewDistance()
         {
             float Distance = Vector3.Distance(transform.position, Camera.main.transform.position);
-            float viewDistance = 4f;
+            float viewDistance = Mod.ShowNameDistance.Value;
             bool CanSee = (bool)(Distance <= viewDistance);
             if (Mod.Speaker.Value == true)
             {

@@ -11,11 +11,14 @@ namespace WhoIsTalking
     {
         public static ConfigEntry<bool> Speaker;
         public static ConfigEntry<bool> ShowPlatform;
+        public static ConfigEntry<float> ShowNameDistance;
+
         Mod()
         {
             HarmonyP.ApplyPatches();
             Speaker = Config.Bind("Settings", "Speaker", true);
             ShowPlatform = Config.Bind("Settings", "ShowGamePlatform", false);
+            ShowNameDistance = Config.Bind("Settings", "ShowNameDistance", 4f);
         }
     }
 }
