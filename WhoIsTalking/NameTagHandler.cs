@@ -83,7 +83,7 @@ namespace WhoIsTalking
             voice = VRRigCache.rigsInUse[rig.OwningNetPlayer].voiceView;
 
             // note: Oculus Rift players still show up as "OCULUS"
-            platform = rig.concatStringOfCosmeticsAllowed.ToUpper().Contains("FIRST LOGIN") ? " (STEAM)" : " (OCULUS)";
+            platform = rig.concatStringOfCosmeticsAllowed.Contains("FIRST LOGIN") ? " (STEAM)" : " (OCULUS)";
         }
 
         void FixedUpdate()
